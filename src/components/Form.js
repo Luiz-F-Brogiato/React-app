@@ -1,21 +1,49 @@
-function Form(){
-    function cadastrarUsuario(e){
+import { useState } from 'react'
+function Form() {
+    function cadastrarUsuario(e) {
         e.preventDefault()
         alert("Usuário Cadastrado")
+        alert(name)
+        alert(password)
     }
-return(
-    
-    <>
-    <h1>
-        Meu cadastro:
-    </h1>
-    <form onSubmit={cadastrarUsuario}>
+
+
+    const [name, setName] = useState();
+    const [password, setPassword] = useState();
+
+    return (
+
+        <>
+            <h1>
+                Meu cadastro:
+            </h1>
+            <form onSubmit={cadastrarUsuario}>
+                <div>
+                    <label htmlFor="name">
+                        Nome:
+                    </label>
+                    <input type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Digite o seu nome"
+                        onChange={(e) => setName(e.target.value)}
+                        />
+            </div>
         <div>
-            <input type="text" placeholder="Digite o seu nome"></input>
-        </div><div>
-            <input type="submit" value="cadastrar"></input>
+            <label htmlFor="password">
+                Senha
+            </label>
+            <input type="password"
+             id="password"
+              name="password" 
+              placeholder="Digite sua senha"
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
         </div>
-    </form>
+        <div>
+            <input type="submit" value="Cadastrar"></input>
+        </div>
+    </form >
     </>
 )
 
